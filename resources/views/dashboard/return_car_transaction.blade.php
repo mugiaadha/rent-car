@@ -80,7 +80,7 @@
               </div>
               <div class="col-12">
                 <label for="inputPassword4" class="form-label">Total Biaya Sewa</label>
-                <input type="text" class="form-control" id="inputPassword4" name="total_sewa" value="{{ $data->vd_tarif * $data->vrd_total_hari_sewa }}" readonly>
+                <input type="text" class="form-control" id="inputPassword4" name="total_sewa" value="{{ $total }}" readonly>
               </div>
               <div class="text-end">
                 <button

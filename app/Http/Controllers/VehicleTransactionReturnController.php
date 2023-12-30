@@ -24,6 +24,7 @@ class VehicleTransactionReturnController extends Controller
                 }
             )
             ->where('vrd_status', 'Y')
+            ->orderBy('vrd_id', 'desc')
             ->simplePaginate(20);
 
         return view('dashboard.vehicle_transacation_return_management', [
@@ -39,12 +40,12 @@ class VehicleTransactionReturnController extends Controller
             ->first();
 
         return view('dashboard.return_car_transaction', [
-            'data' => $data
+            'data' => $data,
+            'total' => abs($data->vrd_total_hari_sewa * $data->vd_tarif)
         ]);
     }
 
     public function doApproveReturn(Request $request) {
-
         $data = VehicleRentData::query()
             ->join('vehicle_data', 'vrd_vd_id', '=', 'vd_id')
             ->join('user_data', 'vrd_ud_id', '=', 'ud_id')
@@ -52,7 +53,7 @@ class VehicleTransactionReturnController extends Controller
             ->first();
 
         $vehicleData = DB::table('vehicle_data')->where('vd_id', $data->vd_id);
-        $vehicleData->update(["vd_status" => "Y"]);
+        $vehicleData->update(["vd_status" => "available"]);
 
         DB::table('vehicle_transaction_return_data')->insert([
             'vtrd_vrd_id' => $request->rent_id,

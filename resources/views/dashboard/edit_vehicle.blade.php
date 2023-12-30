@@ -78,9 +78,9 @@
               <div class="col-md-4">
                 <label for="inputStatus" class="form-label">Status</label>
                 <select id="inputStatus" class="form-select" name="status">
-                  <option {{ $data->vd_status == 'Y' ? 'selected' : '' }} value="Y">Active</option>
-                  <option {{ $data->vd_status == 'N' ? 'selected' : '' }} value="N">Inactive</option>
-                  <option {{ $data->vd_status == 'D' ? 'selected' : '' }} value="D">Rented</option>
+                  <option {{ $data->vd_status == 'available' ? 'selected' : '' }} value="available">Available</option>
+                  <option {{ $data->vd_status == 'not-available' ? 'selected' : '' }} value="not-available">Not Available</option>
+                  <option {{ $data->vd_status == 'rented' ? 'selected' : '' }} value="rented">Rented</option>
                 </select>
               </div>
               <div class="text-end">

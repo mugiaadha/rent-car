@@ -27,7 +27,7 @@
                 <div class="datatable-top">
                   <div class="datatable-search">
                     <form action="" method="get">
-                      <input class="datatable-input" placeholder="Search..." type="search" autocomplete="off"  title="Search within table" name="search" id="search" onchange="onChangeHandler()">
+                      <input class="datatable-input" placeholder="Search..." type="text" autocomplete="off" title="Search within table" name="search" id="search" value="{{ \Request::input('search') ? \Request::input('search') : '' }}">
                     </form>
                   </div>
 
@@ -75,18 +75,7 @@
                             <td class="text-center">{{ $item['vd_model'] }}</td>
                             <td class="text-center">{{ $item['vd_tahun'] }}</td>
                             <td class="text-center">{{ $item['vd_tarif'] }}</td>
-                            @switch($item['vd_status'])
-                                @case("Y")
-                                  <td class="text-center">Available</td>
-                                @break
-
-                                @case("N")
-                                  <td class="text-center">Not Available</td>
-                                @break
-
-                                @default
-                                  <td class="text-center">Rented</td>
-                            @endswitch
+                            <td class="text-center">{{ $item['vd_status'] }}</td>
                             <td class="text-center">
                               <a
                                 href="{{ route('edit-vehicle', ['id' => $item['vd_id']]) }}">

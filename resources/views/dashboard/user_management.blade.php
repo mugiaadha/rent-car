@@ -27,7 +27,7 @@
                 <div class="datatable-top">
                   <div class="datatable-search">
                     <form action="" method="get">
-                      <input class="datatable-input" placeholder="Search..." type="search" autocomplete="off"  title="Search within table" name="search" id="search" onchange="onChangeHandler()">
+                      <input class="datatable-input" placeholder="Search..." type="text" autocomplete="off" title="Search within table" name="search" id="search" value="{{ \Request::input('search') ? \Request::input('search') : '' }}">
                     </form>
                   </div>
 
@@ -73,11 +73,13 @@
                                 href="{{ route('edit-user', ['id' => $item['ud_id']]) }}">
                                 <i class="ri ri-edit-box-line"></i>
                               </a>
-                              <a
-                                href="{{ route('delete-user', ['id' => $item['ud_id']]) }}"
-                                onclick="return confirm('Are you sure to remove this data?')">
-                                <i class="ri ri-delete-bin-2-fill"></i>
-                              </a>
+                              @if (session('user_data') == 'super-admin')
+                                <a
+                                  href="{{ route('delete-user', ['id' => $item['ud_id']]) }}"
+                                  onclick="return confirm('Are you sure to remove this data?')">
+                                  <i class="ri ri-delete-bin-2-fill"></i>
+                                </a>
+                              @endif
                             </td>
                           </tr>
                         @endforeach

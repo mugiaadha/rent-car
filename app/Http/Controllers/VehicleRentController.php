@@ -35,6 +35,7 @@ class VehicleRentController extends Controller
                 }
             )
             ->groupBy('vrd_id')
+            ->orderBy('vrd_id', 'desc')
             ->simplePaginate(20);
 
         return view('dashboard.vehicle_rent_management', [
@@ -57,9 +58,18 @@ class VehicleRentController extends Controller
                 $this->alert('tanggal sewa dan tanggal kembali salah!');
             }
 
+            $data = VehicleRentData::query()
+                ->where('vrd_status','D')
+                ->whereBetween(DB::raw($request->tgl_sewa), [$request->tgl_sewa, $request->tgl_kembali])
+                ->first();
+
+            if ($data) {
+                $this->alert('tanggal sewa dan tanggal kembali salah!');
+            }
+
             DB::table('vehicle_rent_data')->insert([
                 "vrd_transaction_number" => $this->generateTrxId(),
-                "vrd_total_hari_sewa" => $request->total_hari,
+                "vrd_total_hari_sewa" => $this->countDays($request->tgl_sewa, $request->tgl_kembali),
                 "vrd_rent_date" => $request->tgl_sewa,
                 "vrd_estimated_until_date" => $request->tgl_kembali,
                 "vrd_ud_id" => session('user_data')->ud_id,
@@ -78,7 +88,7 @@ class VehicleRentController extends Controller
             $rentData = DB::table('vehicle_rent_data')->where('vrd_id', $id);
             $vehicleData = DB::table('vehicle_data')->where('vd_id', $rentData->first()->vrd_vd_id);
             $rentData->update(["vrd_status" => "Y"]);
-            $vehicleData->update(["vd_status" => "D"]);
+            $vehicleData->update(["vd_status" => "rented"]);
         } catch (\Throwable $ex) {
             throw new Exception($ex);
         }
@@ -90,13 +100,16 @@ class VehicleRentController extends Controller
         return 'RENT-'.date('Ymd').'-'.rand(1, 9999);
     }
 
-    private function generateEstimatedUntil($count) { 
-        $date=date_create("now");
-        date_add($date,date_interval_create_from_date_string($count."days"));
-        return date_format($date,"Y-m-d");
+    private function countDays($date1, $date2) { 
+        $datetime1 = date_create($date1);
+        $datetime2 = date_create($date2);
+
+        $interval = date_diff($datetime1, $datetime2);
+
+        return $interval->days;
     }
 
-private function alert($message){
+    private function alert($message){
         die("<script type='text/javascript'>
                 window.alert('$message');
                 window.location.href='/login';

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('vehicle_data', function (Blueprint $table) {
             $table->increments('vd_id');
-            $table->string('vd_plat_nomor', 20)->nullable();
+            $table->string('vd_plat_nomor', 20)->nullable()->unique('plat_nomor');
             $table->year('vd_tahun')->nullable();
             $table->string('vd_merk', 50)->nullable();
             $table->string('vd_model', 50)->nullable();
