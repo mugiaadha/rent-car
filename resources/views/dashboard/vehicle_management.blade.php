@@ -81,11 +81,13 @@
                                 href="{{ route('edit-vehicle', ['id' => $item['vd_id']]) }}">
                                 <i class="ri ri-edit-box-line"></i>
                               </a>
-                              <a
-                                href="{{ route('delete-vehicle', ['id' => $item['vd_id']]) }}"
-                                onclick="return confirm('Are you sure to remove this data?')">
-                                <i class="ri ri-delete-bin-2-fill"></i>
-                              </a>
+                              @if (session('user_data') == 'super-admin')
+                                <a
+                                  href="{{ route('delete-vehicle', ['id' => $item['vd_id']]) }}"
+                                  onclick="return confirm('Are you sure to remove this data?')">
+                                  <i class="ri ri-delete-bin-2-fill"></i>
+                                </a>
+                              @endif
                             </td>
                           </tr>
                         @endforeach
