@@ -1,28 +1,20 @@
-@extends('layouts.dashboard')
+@extends('layouts.outer-dashboard')
 
 @section('main')
-<main id="main" class="main">
-
-  <div class="pagetitle">
-    <h1>Add User</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Add User</li>
-        <li class="breadcrumb-item active">Data</li>
-      </ol>
-    </nav>
-  </div><!-- End Page Title -->
+<main class="main" style="padding:50px 400px 0px 400px;">
+  <div class="pagetitle" align="center">
+    <h1>Mohon Isi Data Diri</h1>
+  </div>
 
   <section class="section">
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Tambah Data</h5>
+            <h5 class="card-title">Form Registrasi</h5>
 
             <!-- No Labels Form -->
-            <form class="row g-3" action="/auth/create-user" method="POST">
+            <form class="row g-3" action="/create-user" method="POST">
               @csrf
               <div class="col-md-12">
                 <label for="inputEmail4" class="form-label">Nama Lengkap</label>  
@@ -45,13 +37,13 @@
                   placeholder="address"
                   style="height:100px;"></textarea>
               </div>
-              <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Nomor SIM</label>
-                <input type="text" class="form-control" placeholder="no. sim" name="nomor_sim" required>
-              </div>
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <label for="inputEmail4" class="form-label">Nomor Telepon</label>
                 <input type="text" class="form-control" placeholder="no. telepon" name="nomor_telepon" required>
+              </div>
+              <div class="col-md-8">
+                <label for="inputEmail4" class="form-label">Nomor SIM</label>
+                <input type="text" class="form-control" placeholder="no. sim" name="nomor_sim" required>
               </div>
               <div class="text-end">
                 <button
@@ -66,7 +58,6 @@
         </div>
       </div>
     </div>
-
   </section>
 </main>
 @endSection

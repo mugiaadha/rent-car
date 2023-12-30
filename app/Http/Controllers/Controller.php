@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     public function loginPage() {
         if (session('user_data')) {
-            return redirect(route('vehicle-management'));
+            return redirect(route('rent-car-transaction'));
         }
 
         return view('login');
@@ -24,7 +24,7 @@ class Controller extends BaseController
         ])->first();
 
         if($data) {
-            if(Hash::check($request->password, $data->ud_password)){
+            if (Hash::check($request->password, $data->ud_password)) {
                 session(['user_data' => $data]);
                 return redirect(route('vehicle-management'));
             } else {

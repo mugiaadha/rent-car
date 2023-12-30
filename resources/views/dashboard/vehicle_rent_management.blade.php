@@ -4,11 +4,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Rent Car Transaction</h1>
+      <h1>Peminjaman Mobil</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Rent Car Transaction</li>
+          <li class="breadcrumb-item">Peminjaman Mobil</li>
           <li class="breadcrumb-item active">Data</li>
         </ol>
       </nav>
@@ -20,14 +20,14 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Rent Car Transaction</h5>
+              <h5 class="card-title">Peminjaman Mobil</h5>
               
               <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
                 
                 <div class="datatable-top">
                   <div class="datatable-search">
                     <form action="" method="get">
-                      <input class="datatable-input" placeholder="Search..." type="search" title="Search within table" name="search" id="search" onchange="onChangeHandler()">
+                      <input class="datatable-input" placeholder="Search..." type="search" autocomplete="off"  title="Search within table" name="search" id="search" onchange="onChangeHandler()">
                     </form>
                   </div>
 
@@ -49,13 +49,13 @@
                           <button>Penyewa</button>
                         </th>
                         <th class="text-center">
-                          <button>Merk</button>
+                          <button>Merk - Model <br> Plat Nomor</button>
                         </th>
                         <th class="text-center">
-                          <button>Model</button>
+                          <button>Tanggal Pinjam</button>
                         </th>
                         <th class="text-center">
-                          <button>Estimation Return</button>
+                          <button>Tanggal Kembali</button>
                         </th>
                         <th class="text-center">
                           <button>Status</button>
@@ -72,9 +72,9 @@
                             <td class="text-center">{{ (($data->currentPage()-1)*$data->perPage()) + ($key+1) }}</td>
                             <td class="text-center">{{ $item['vrd_transaction_number'] }}</td>
                             <td class="text-center">{{ $item['ud_nama'] }}</td>
-                            <td class="text-center">{{ $item['vd_merk'] }}</td>
-                            <td class="text-center">{{ $item['vd_model'] }}</td>
-                            <td class="text-center">{{ $item['vrd_estimated_until_date'] }}</td>
+                            <td class="text-center">{{ $item['vd_merk']." - ".$item['vd_model'] }}<br>{{ $item['vd_plat_nomor'] }}</td>
+                            <td class="text-center">{{ $item['rent_date'] }}</td>
+                            <td class="text-center">{{ $item['estimated_until_date'] }}</td>
                             @switch($item['vrd_status'])
                                 @case("Y")
                                   <td class="text-center">Approved</td>

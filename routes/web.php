@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/add-user', [UserController::class, 'addUser'])->name('add-user');
+Route::get('/registration', [UserController::class, 'addUser'])->name('registration');
+Route::post('/create-user', [UserController::class, 'createUser'])->name('add-user');
 
 Route::prefix('/')->group(function () {
+    Route::get('/', [Controller::class, 'loginPage'])->name('home');
     Route::get('/login', [Controller::class, 'loginPage'])->name('login-page');
     Route::post('/login', [Controller::class, 'doLogin'])->name('do-login');
     Route::get('/logout', [Controller::class, 'doLogout'])->name('do-logout');
@@ -32,10 +34,10 @@ Route::group(['prefix' => 'auth', 'middleware' => 'auth.app'], function () {
     Route::get('/user-management', [UserController::class, 'show'])->name('user-management');
     Route::get('/edit-user/{id}', [UserController::class, 'editUser'])->name('edit-user');
     Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('delete-user');
-    Route::post('/create-user', [UserController::class, 'createUser'])->name('add-user');
     Route::post('/update-user/{id}', [UserController::class, 'updateUser'])->name('update-user');
 
     Route::get('/vehicle-management', [VehicleController::class, 'show'])->name('vehicle-management');
+    Route::get('/find-vehicle', [VehicleController::class, 'findVehicle'])->name('find-vehicle');
     Route::get('/add-vehicle', [VehicleController::class, 'addVehicle'])->name('add-vehicle');
     Route::get('/edit-vehicle/{id}', [VehicleController::class, 'editVehicle'])->name('edit-vehicle');
     Route::get('/delete-vehicle/{id}', [VehicleController::class, 'deleteVehicle'])->name('delete-vehicle');
@@ -45,7 +47,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'auth.app'], function () {
     Route::get('/rent-car-transaction-list', [VehicleRentController::class, 'show'])->name('rent-car-transaction');
     Route::get('/approve-rent/{id}', [VehicleRentController::class, 'approveRent'])->name('approve-rent');
     
-    Route::get('/add-rent-transaction', [
+    Route::get('/add-rent-transaction/{vehicleId?}', [
         VehicleRentController::class, 'addRentTransaction'
     ])->name('add-rent-transaction');
 

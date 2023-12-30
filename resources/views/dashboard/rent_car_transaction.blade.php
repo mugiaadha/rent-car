@@ -4,7 +4,7 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Rent Car Transaction</h1>
+    <h1>Peminjaman Mobil</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -20,15 +20,14 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Rent Car Transaction</h5>
+            <h5 class="card-title">Peminjaman Mobil</h5>
             
             <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
               
               <div class="datatable-top">
               
               <div class="datatable-search">
-                      <input class="datatable-input" placeholder="Search..." type="search" title="Search within table">
-                  </div>
+                <input class="datatable-input" placeholder="Search..." type="search" autocomplete="off"  title="Search within table">
               </div>
               <div class="datatable-container">
                 <table class="table datatable datatable-table">

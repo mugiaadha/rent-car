@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('vd_merk', 50)->nullable();
             $table->string('vd_model', 50)->nullable();
             $table->bigInteger('vd_tarif');
-            $table->enum('vd_status', ['Y', 'N', 'D'])->default('Y');
+            $table->enum('vd_status', ['available', 'not-available', 'rented'])->default('available');
             $table->timestamp('vd_created_date')->useCurrent();
             $table->timestamp('vd_updated_date')->useCurrent()->useCurrentOnUpdate();
         });

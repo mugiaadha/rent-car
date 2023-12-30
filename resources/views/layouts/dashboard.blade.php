@@ -21,7 +21,6 @@
     <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
-    
     <link href="/assets/css/style.css" rel="stylesheet">
 
     @yield('js')
@@ -30,7 +29,7 @@
   <body>
     @include('layouts.parts.header')
 
-    @include('layouts.parts.dashboard')
+    @include('layouts.parts.sidebar')
 
     @yield('main')
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('vrd_vd_id');
             $table->integer('vrd_total_hari_sewa')->nullable();
             $table->enum('vrd_status', ['Y', 'N', 'D'])->default('D');
+            $table->timestamp('vrd_rent_date')->nullable();
             $table->timestamp('vrd_estimated_until_date')->nullable();
             $table->timestamp('vrd_created_date')->useCurrent();
             $table->timestamp('vrd_updated_date')->useCurrent()->useCurrentOnUpdate();

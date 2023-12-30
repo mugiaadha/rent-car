@@ -29,7 +29,7 @@
                 <input
                     type="text"
                     class="form-control"
-                    placeholder="F 12345 GHJ"
+                    placeholder="plat nomor"
                     name="plat_nomor"
                     required>
               </div>
@@ -38,7 +38,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Honda, Audi, Toyota"
+                  placeholder="merk"
                   name="merk"
                   required>
               </div>
@@ -47,7 +47,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="sedan, jeep, suv, mvp"
+                  placeholder="model"
                   name="model"
                   required>
               </div>

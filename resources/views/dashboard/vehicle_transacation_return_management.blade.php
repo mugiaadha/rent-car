@@ -4,11 +4,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Return Car Management</h1>
+      <h1>Pengembalian Mobil</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Return Car Management</li>
+          <li class="breadcrumb-item">Pengembalian Mobil</li>
           <li class="breadcrumb-item active">Data</li>
         </ol>
       </nav>
@@ -20,14 +20,14 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Return Car Management</h5>
+              <h5 class="card-title">Pengembalian Mobil</h5>
               
               <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
                 
                 <div class="datatable-top">
                   <div class="datatable-search">
                     <form action="" method="get">
-                      <input class="datatable-input" placeholder="Search..." type="search" title="Search within table" name="search" id="search" onchange="onChangeHandler()">
+                      <input class="datatable-input" placeholder="Search..." type="search" autocomplete="off"  title="Search within table" name="search" id="search" onchange="onChangeHandler()">
                     </form>
                   </div>
                 </div>
@@ -85,7 +85,7 @@
                               @if ($item['vtrd_status'] != 'Y' && session('user_data')->ud_level == 'admin')
                                 <a
                                   href="{{ route('approve-return', ['id' => $item['vrd_id']]) }}"
-                                  onclick="return confirm('Are you sure to approve this return?')">
+                                  onclick="return confirm('Are you sure to approve this transaction?')">
                                   <i class="bi bi-check-circle"></i>
                                 </a>
                               @endif

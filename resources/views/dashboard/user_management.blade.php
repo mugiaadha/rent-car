@@ -4,11 +4,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>User Management</h1>
+      <h1>Manajemen Pengguna</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">User Management</li>
+          <li class="breadcrumb-item">Manajemen Pengguna</li>
           <li class="breadcrumb-item active">Data</li>
         </ol>
       </nav>
@@ -20,14 +20,14 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">User Management</h5>
+              <h5 class="card-title">Manajemen Pengguna</h5>
               
               <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
                 
                 <div class="datatable-top">
                   <div class="datatable-search">
                     <form action="" method="get">
-                      <input class="datatable-input" placeholder="Search..." type="search" title="Search within table" name="search" id="search" onchange="onChangeHandler()">
+                      <input class="datatable-input" placeholder="Search..." type="search" autocomplete="off"  title="Search within table" name="search" id="search" onchange="onChangeHandler()">
                     </form>
                   </div>
 

@@ -1,4 +1,4 @@
-@extends('layouts.outer_dashboard')
+@extends('layouts.outer-dashboard')
 
 @section('main')
     <main>
@@ -11,7 +11,7 @@
                         <div class="card m-top">
                             <div class="card-body">
                                 <h5 class="card-title text-center">Login Form</h5>
-                                <form action="" method="POST">
+                                <form action="/login" method="POST">
                                     @csrf
                                     <div class="row mb-3">
                                         <label for="inputEmail3" class="col-sm-12 col-form-label">Username / Email</label>
@@ -23,6 +23,11 @@
                                         <label for="inputPassword3" class="col-sm-12 col-form-label">Password</label>
                                         <div class="col-sm-12">
                                         <input type="password" name="password" class="form-control" id="inputPassword">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-12">
+                                            <span style="color:c0c0c0; font-size:0.8rem;">belum punya akun? <a href="/registration" style="color:#0d6efd;">registrasi disini</a></span>
                                         </div>
                                     </div>
                                     <div class="text-center">

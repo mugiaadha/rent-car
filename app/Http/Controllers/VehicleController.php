@@ -28,6 +28,24 @@ class VehicleController extends Controller
         ]);
     }
 
+    public function findVehicle(Request $request) {
+        $data = VehicleData::query()
+            ->when(
+                $request->search,
+                function (Builder $builder) use ($request) {
+                    $builder->where('vd_plat_nomor', 'like', "%{$request->search}%")
+                        ->orWhere('vd_model', 'like', "%{$request->search}%")
+                        ->orWhere('vd_merk', 'like', "%{$request->search}%");
+                }
+            )
+            ->where('vd_status', 'available')
+            ->simplePaginate(9);
+
+        return view('dashboard.find_vehicle', [
+            'data' => $data
+        ]);
+    }
+
     public function addVehicle() {
         return view('dashboard.add_vehicle');
     }
